@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+cn.zeroable.cat4j.nacos.starter.config.NacosAutoConfig
