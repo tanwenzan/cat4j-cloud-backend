@@ -1,5 +1,6 @@
 package cn.zeroable.cat4j.response;
 
+
 public abstract class AbstractResponseResult implements ResponseResult {
 
     @Override
