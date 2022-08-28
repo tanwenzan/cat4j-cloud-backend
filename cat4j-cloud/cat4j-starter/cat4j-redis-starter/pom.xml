@@ -26,7 +26,12 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
+        <!-- redisson-springboot 用于集成分布式锁 -->
+        <dependency>
+            <groupId>org.redisson</groupId>
+            <artifactId>redisson-spring-boot-starter</artifactId>
+            <version>${redission.version}</version>
+        </dependency>
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>

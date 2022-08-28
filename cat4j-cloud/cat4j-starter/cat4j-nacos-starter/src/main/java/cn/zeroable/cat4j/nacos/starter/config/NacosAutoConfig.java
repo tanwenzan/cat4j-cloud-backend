@@ -5,10 +5,12 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * nacos 自动配置。
- * <br/>create on 2022-07-08
+ * <br/> nacos 自动配置。
  *
  * @author zeroable
- * @version 1.0
+ * @version 2022/8/28 18:07
+ * @see
+ * @since 0.0.1
  */
 @Configuration
 @EnableDiscoveryClient

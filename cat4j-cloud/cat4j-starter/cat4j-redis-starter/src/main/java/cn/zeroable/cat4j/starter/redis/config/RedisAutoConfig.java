@@ -26,11 +26,13 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 
 /**
- * Redis 自动配置，一定要在RedisAutoConfiguration之前配置，否则自定义的RedisTemplate不生效
- * <br/>create on 2022-07-08
+ * Redis 自动配置.
+ * <br/> 一定要在RedisAutoConfiguration之前配置，否则自定义的RedisTemplate不生效.
  *
  * @author zeroable
- * @version 1.0
+ * @version 2022/8/28 18:07
+ * @see
+ * @since 0.0.1
  */
 @Configuration
 @AutoConfigureBefore(value = {RedisAutoConfiguration.class})
