@@ -21,6 +21,7 @@ import java.util.List;
 public class RedisProperties {
     private Integer timeout;
     private Integer database;
+    private String type;
     private Integer port;
     private String host;
     private String password;

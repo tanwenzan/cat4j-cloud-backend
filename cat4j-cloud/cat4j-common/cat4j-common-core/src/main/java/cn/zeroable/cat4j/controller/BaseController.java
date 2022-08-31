@@ -1,20 +1,19 @@
-package cn.zeroable.cat4j.service;
+package cn.zeroable.cat4j.controller;
 
 import cn.zeroable.cat4j.response.ResponseResultFactory;
 import cn.zeroable.cat4j.response.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- * 基础Service实现类。
- * <br/> 基础Service实现类
+ * 基础Controller.
+ * <br/> 基础的Controller，用于封装基本返回响应结果.
  *
  * @author zeroable
- * @version 2022/8/28 18:02
+ * @version 2022/8/31 22:56
  * @see
  * @since 0.0.1
  */
-public class BaseServiceImpl<M, E> {
-
+public class BaseController {
     @Autowired
     ResponseResultFactory responseResultFactory;
 

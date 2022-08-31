@@ -1,0 +1,57 @@
+server:
+  port: 8080
+spring:
+  profiles:
+    active: dev
+  autoconfigure:
+    # 自动化配置 例外处理
+    exclude: com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure
+  type: com.alibaba.druid.pool.DruidDataSource
+  datasource:
+    dynamic:
+      primary: cat4j-main
+      datasource:
+        cat4j-sys:
+          url: jdbc:mysql://127.0.0.1:3306/cat4j_sys?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          username: root
+          password: zeroable2020
+        cat4j-main:
+          url: jdbc:mysql://127.0.0.1:3306/cat4j_main?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          username: root
+          password: zeroable2020
+      druid:
+        initialSize: 5
+        minIdle: 5
+        maxActive: 30
+        maxWait: 60000
+        timeBetweenEvictionRunsMillis: 60000
+        minEvictableIdleTimeMillis: 300000
+        validationQuery: SELECT 1
+        testWhileIdle: true
+        testOnBorrow: false
+        testOnReturn: false
+        poolPreparedStatements: true
+        maxPoolPreparedStatementPerConnectionSize: 20
+        filters: stat,wall,slf4j,config
+        useGlobalDataSourceStat: true
+        stat:
+          log-slow-sql: true
+          merge-sql: true
+          slow-sql-millis: 10000
+    druid:
+      # 监控页面
+      statViewServlet:
+        enabled: true
+        # 设置白名单，不填则允许所有访问
+        allow:
+        url-pattern: /druid/*
+        # 控制台管理用户名和密码
+        login-username: admin
+        login-password: admin
+mybatis-plus:
+  type-aliases-package: cn.zeroable.cat4j.*
+  mapper-locations: classpath*:mapper/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: true

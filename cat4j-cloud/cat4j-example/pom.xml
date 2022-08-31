@@ -7,13 +7,9 @@
         <groupId>cn.zeroable.cat4j</groupId>
         <version>0.0.1</version>
     </parent>
-    <name>cat4j-starter</name>
     <modelVersion>4.0.0</modelVersion>
-    <packaging>pom</packaging>
     <modules>
-        <module>cat4j-nacos-starter</module>
-        <module>cat4j-redis-starter</module>
-        <module>cat4j-mybatis-plus-starter</module>
+        <module>cat4j-multiple-datasource-test</module>
     </modules>
-    <artifactId>cat4j-starter</artifactId>
+    <artifactId>cat4j-example</artifactId>
 </project>

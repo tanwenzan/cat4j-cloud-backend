@@ -44,5 +44,10 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
         </dependency>
+        <dependency>
+            <artifactId>cat4j-common-core</artifactId>
+            <groupId>cn.zeroable.cat4j</groupId>
+            <version>${cat4j.version}</version>
+        </dependency>
     </dependencies>
 </project>

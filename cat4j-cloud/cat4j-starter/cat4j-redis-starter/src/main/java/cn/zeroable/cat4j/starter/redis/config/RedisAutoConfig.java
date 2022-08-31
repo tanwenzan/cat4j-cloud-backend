@@ -37,38 +37,6 @@ import java.util.Arrays;
 @Configuration
 @AutoConfigureBefore(value = {RedisAutoConfiguration.class})
 public class RedisAutoConfig {
-    @Value("${spring.redis.host:127.0.0.1}")
-    private String host;
-
-    @Value("${spring.redis.port:6379}")
-    private int port;
-
-    @Value("${spring.redis.password}")
-    private String password;
-
-    @Value("${spring.redis.timeout}")
-    private int timeout;
-
-    @Value("${spring.redis.jedis.pool.max-idle}")
-    private int maxIdle;
-
-    @Value("${spring.redis.jedis.pool.max-wait}")
-    private long maxWaitMillis;
-
-    @Value("${spring.redis.database:0}")
-    private int database;
-
-    @Bean
-    public JedisPool redisPoolFactory() {
-        JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
-        jedisPoolConfig.setMaxIdle(maxIdle);
-        jedisPoolConfig.setMaxWaitMillis(maxWaitMillis);
-        if (!StringUtils.isEmpty(password)) {
-            return new JedisPool(jedisPoolConfig, host, port, timeout, password, database);
-        } else {
-            return new JedisPool(jedisPoolConfig, host, port, timeout, null, database);
-        }
-    }
 
     @Bean
     public KeyGenerator keyGenerator() {
@@ -105,40 +73,4 @@ public class RedisAutoConfig {
         return redisTemplate;
     }
 
-
-    class JacksonRedisSerializer<T> implements RedisSerializer<T> {
-        private Class<T> clazz;
-        private ObjectMapper mapper;
-
-        JacksonRedisSerializer(Class<T> clazz) {
-            super();
-            this.clazz = clazz;
-            this.mapper = new ObjectMapper();
-            mapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
-            mapper.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
-        }
-
-        @Override
-        public byte[] serialize(T t) throws SerializationException {
-            try {
-                return mapper.writeValueAsBytes(t);
-            } catch (JsonProcessingException e) {
-                e.printStackTrace();
-                return null;
-            }
-        }
-
-        @Override
-        public T deserialize(byte[] bytes) throws SerializationException {
-            if (bytes.length <= 0) {
-                return null;
-            }
-            try {
-                return mapper.readValue(bytes, clazz);
-            } catch (IOException e) {
-                e.printStackTrace();
-                return null;
-            }
-        }
-    }
 }
